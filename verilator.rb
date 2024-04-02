@@ -1,9 +1,7 @@
 class Verilator < Formula
   desc "Verilog simulator"
   homepage "https://www.selimsandal.com"
-  url "https://github.com/selimsandal/verilator.git", branch: "master"
-  sha256 "3c2f5338f4b6ce7e2f47a142401acdd18cbf4c5da06092618d6d036c0afef12d"
-  license any_of: ["LGPL-3.0-only", "Artistic-2.0"]
+  head "https://github.com/selimsandal/verilator.git", branch: "master"
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
