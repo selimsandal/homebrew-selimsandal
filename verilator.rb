@@ -22,7 +22,7 @@ class Verilator < Formula
     system "./configure", "--prefix=#{prefix}"
     ENV.deparallelize if OS.mac?
     # `make` and `make install` need to be separate for parallel builds
-    system "make"
+    system "make", "-j"
     ENV.deparallelize do
       system "make", "install"
     end
