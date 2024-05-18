@@ -23,7 +23,9 @@ class Verilator < Formula
     ENV.deparallelize if OS.mac?
     # `make` and `make install` need to be separate for parallel builds
     system "make"
-    system "make", "install"
+    ENV.deparallelize do
+      system "make", "install"
+    end
 
     # Avoid hardcoding build-time references that may not be valid at runtime.
     inreplace pkgshare/"include/verilated.mk" do |s|
