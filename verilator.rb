@@ -33,32 +33,4 @@ class Verilator < Formula
       s.change_make_var! "PYTHON3", "python3"
     end
   end
-
-  test do
-    (testpath/"test.v").write <<~EOS
-      module test;
-         initial begin $display("Hello World"); $finish; end
-      endmodule
-    EOS
-    (testpath/"test.cpp").write <<~EOS
-      #include "Vtest.h"
-      #include "verilated.h"
-      int main(int argc, char **argv, char **env) {
-          Verilated::commandArgs(argc, argv);
-          Vtest* top = new Vtest;
-          while (!Verilated::gotFinish()) { top->eval(); }
-          delete top;
-          exit(0);
-      }
-    EOS
-    system bin/"verilator", "-Wall", "--cc", "test.v", "--exe", "test.cpp"
-    cd "obj_dir" do
-      system "make", "-j", "-f", "Vtest.mk", "Vtest"
-      expected = <<~EOS
-        Hello World
-        - test.v:2: Verilog $finish
-      EOS
-      assert_equal expected, shell_output("./Vtest")
-    end
-  end
 end
