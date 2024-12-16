@@ -3,7 +3,7 @@ class Slang < Formula
   homepage "https://github.com/shader-slang/slang"
   url "https://github.com/shader-slang/slang.git",
       tag:      "v2024.17",
-      revision: "HEAD"
+      revision: "772c48af91951bda9ff7064fc7a089550c759f76"
   license "MIT"
   head "https://github.com/shader-slang/slang.git", branch: "master"
 
