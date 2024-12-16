@@ -15,6 +15,7 @@ class Slang < Formula
            "-G", "Ninja",
            "-DCMAKE_BUILD_TYPE=Release",
            "-DCMAKE_INSTALL_PREFIX=#{prefix}",
+           "-DHOMEBREW_ALLOW_FETCHCONTENT=ON",
            *std_cmake_args
     
     system "cmake", "--build", "build"
