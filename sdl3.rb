@@ -1,9 +1,7 @@
 class Sdl3 < Formula
   desc "Low-level access to audio, keyboard, mouse, joystick, and graphics"
   homepage "https://www.libsdl.org/"
-  url "https://github.com/libsdl-org/SDL.git",
-      tag: "preview-3.1.6",
-      revision: "78cc5c173404488d80751af226d1eaf67033bcc4"
+  url "https://github.com/libsdl-org/SDL.git", branch: "main"
   license "Zlib"
   head "https://github.com/libsdl-org/SDL.git", branch: "main"
 
