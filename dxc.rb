@@ -16,10 +16,15 @@ class Dxc < Formula
    
    system "cmake", "--build", "build"
 
-   # Copy binaries
    cd "build/bin" do
      real_dxc = File.realpath("dxc")
      bin.install real_dxc => "dxc"
+   end
+
+   cd "build/lib" do
+     lib.install "dxcompiler.dll" if OS.windows?
+     lib.install "libdxcompiler.so" if OS.linux?
+     lib.install "libdxcompiler.dylib" if OS.mac?
    end
  end
 end
