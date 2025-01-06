@@ -17,6 +17,9 @@ class Dxc < Formula
    system "cmake", "--build", "build"
 
    # Copy binaries
-   bin.install File.realpath("dxc")
+   cd "build/bin" do
+     real_dxc = File.realpath("dxc")
+     bin.install real_dxc => "dxc"
+   end
  end
 end
