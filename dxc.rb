@@ -17,8 +17,10 @@ class Dxc < Formula
    system "cmake", "--build", "build"
 
    cd "build/bin" do
-     real_dxc = File.realpath("dxc")
-     bin.install real_dxc => "dxc"
+     ["dxc", "dxa", "dxl", "dxopt", "dxr", "dxv"].each do |tool|
+       real_path = File.realpath(tool)
+       bin.install real_path => tool
+     end
    end
 
    cd "build/lib" do
