@@ -24,7 +24,6 @@ class Dxc < Formula
    end
 
    cd "build/lib" do
-     lib.install "dxcompiler.dll" if OS.windows?
      lib.install "libdxcompiler.so" if OS.linux?
      lib.install "libdxcompiler.dylib" if OS.mac?
    end
