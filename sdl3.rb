@@ -9,6 +9,7 @@ class Sdl3 < Formula
   def install
     system "cmake", "-S", ".", "-B", "build",
            "-DSDL_STATIC=ON",
+           "-DSDL_SHARED=OFF",
            "-DCMAKE_BUILD_TYPE=Release",
            "-DCMAKE_INSTALL_PREFIX=#{prefix}",
            *std_cmake_args
