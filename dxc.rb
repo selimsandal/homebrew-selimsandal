@@ -15,6 +15,6 @@ class Dxc < Formula
            "-DCMAKE_INSTALL_PREFIX=#{prefix}", # Ensure correct prefix
            "-GNinja"
     system "cmake", "--build", "build"
-    system "cmake", "--build", "build", "--target", "install-distribution", "--", "DESTDIR=#{prefix}"
+    system "cmake", "--build", "build", "--target", "install-distribution"
   end
 end
