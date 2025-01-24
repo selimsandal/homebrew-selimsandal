@@ -12,23 +12,9 @@ class Dxc < Formula
     system "cmake", "-S", ".", "-B", "build",
            "-C", "cmake/caches/PredefinedParams.cmake",
            "-DCMAKE_BUILD_TYPE=Release",
+           "-DCMAKE_INSTALL_PREFIX=#{prefix}", # Ensure correct prefix
            "-GNinja"
-    
     system "cmake", "--build", "build"
-
-    cd "build/bin" do
-      ["dxc", "dxa", "dxl", "dxopt", "dxr", "dxv"].each do |tool|
-        real_path = File.realpath(tool)
-        bin.install real_path => tool
-      end
-    end
-
-    cd "build/lib" do
-      lib.install "libdxcompiler.so" if OS.linux?
-      lib.install "libdxcompiler.dylib" if OS.mac?
-    end
-
-    # Copy the include directory
-    include.install Dir["include/*"]
+    system "cmake", "--build", "build", "--target", "install-distribution", "--", "DESTDIR=#{prefix}"
   end
 end
